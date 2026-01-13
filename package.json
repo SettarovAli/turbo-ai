@@ -7,10 +7,16 @@
     "check-types": "turbo run check-types",
     "lint": "biome lint . --write",
     "format": "biome format . --write",
-    "check": "biome check --files-ignore-unknown=true"
+    "check": "biome check --files-ignore-unknown=true",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.11",
+    "@commitlint/cli": "^20.3.1",
+    "@commitlint/config-conventional": "^20.3.1",
+    "commitlint-plugin-function-rules": "^4.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "turbo": "^2.7.4",
     "typescript": "5.9.2"
   },
