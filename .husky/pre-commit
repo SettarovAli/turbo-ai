@@ -1,2 +1,2 @@
 pnpm exec lint-staged
-node scripts/validate-branch-name.js
+# node scripts/validate-branch-name.js

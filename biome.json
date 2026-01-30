@@ -1,12 +1,9 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.11/schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
   "files": {
-    "ignoreUnknown": false
+    "ignoreUnknown": false,
+    "ignore": [".next", ".turbo"]
   },
   "formatter": {
     "enabled": true,
@@ -19,17 +16,18 @@
     "attributePosition": "auto",
     "bracketSpacing": true
   },
+  "organizeImports": { "enabled": true },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": false,
-      "a11y": {
-        "useButtonType": "off"
-      },
+      "a11y": { "noBlankTarget": "error", "useButtonType": "off" },
       "complexity": {
         "noExtraBooleanCast": "error",
+        "noMultipleSpacesInRegularExpressionLiterals": "error",
         "noUselessCatch": "error",
-        "noUselessTypeConstraint": "error"
+        "noUselessTypeConstraint": "error",
+        "noWith": "error"
       },
       "correctness": {
         "noChildrenProp": "error",
@@ -54,6 +52,7 @@
         "noUnusedLabels": "error",
         "noUnusedPrivateClassMembers": "error",
         "noUnusedVariables": "error",
+        "useArrayLiterals": "off",
         "useExhaustiveDependencies": "warn",
         "useHookAtTopLevel": "error",
         "useIsNan": "error",
@@ -61,13 +60,12 @@
         "useValidForDirection": "error",
         "useYield": "error"
       },
-      "security": {
-        "noDangerouslySetInnerHtmlWithChildren": "error"
-      },
+      "security": { "noDangerouslySetInnerHtmlWithChildren": "error" },
       "style": {
         "noDoneCallback": "error",
         "noNamespace": "error",
         "noParameterAssign": "error",
+        "noVar": "error",
         "useAsConstAssertion": "error",
         "useBlockStatements": "off",
         "useCollapsedElseIf": "error",
@@ -81,9 +79,7 @@
         "noCompareNegZero": "error",
         "noConsole": {
           "level": "error",
-          "options": {
-            "allow": ["info", "error"]
-          }
+          "options": { "allow": ["info", "error"] }
         },
         "noControlCharactersInRegex": "error",
         "noDebugger": "error",
@@ -108,7 +104,8 @@
         "noUnsafeDeclarationMerging": "error",
         "noUnsafeNegation": "error",
         "useGetterReturn": "error",
-        "useNamespaceKeyword": "error"
+        "useNamespaceKeyword": "error",
+        "useValidTypeof": "error"
       }
     }
   },
@@ -148,19 +145,24 @@
   },
   "overrides": [
     {
+      "include": ["*.ts", "*.tsx", "*.mts", "*.cts"],
       "linter": {
         "rules": {
+          "complexity": { "noWith": "off" },
           "correctness": {
             "noConstAssign": "off",
             "noGlobalObjectCalls": "off",
             "noInvalidBuiltinInstantiation": "off",
             "noInvalidConstructorSuper": "off",
+            "noNewSymbol": "off",
             "noSetterReturn": "off",
             "noUndeclaredVariables": "off",
             "noUnreachable": "off",
             "noUnreachableSuper": "off"
           },
           "style": {
+            "noArguments": "error",
+            "noVar": "error",
             "useConst": "error"
           },
           "suspicious": {
@@ -177,13 +179,5 @@
         }
       }
     }
-  ],
-  "assist": {
-    "enabled": true,
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    }
-  }
+  ]
 }
